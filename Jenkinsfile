@@ -5,12 +5,11 @@ pipeline {
       agent any
       steps {
         git(url: 'https://github.com/Rodion/ComeAndEat.git', branch: 'main', changelog: true, poll: true)
-        sh '''git url: \'https://github.com/cyrille-leclerc/multi-module-maven-project\'
-withMaven {
+        sh '''withMaven {
       sh "mvn clean verify"
 }'''
+        }
       }
-    }
 
+    }
   }
-}
