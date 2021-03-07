@@ -9,7 +9,7 @@ pipeline {
       steps {
         git(url: 'https://github.com/Rodion/ComeAndEat.git', branch: 'master')
         withMaven() {
-          sh 'mvn clean verify'
+          sh 'mvn clean install -DskipTests -Dmaven.test.skip=true'
         }
 
       }
