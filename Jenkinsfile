@@ -1,5 +1,8 @@
 pipeline {
   agent any
+  tools {
+    maven 'Maven_3.6.3'
+  }
   stages {
     stage('Build') {
       agent any
@@ -11,13 +14,5 @@ pipeline {
 
       }
     }
-
-  }
-<<<<<<< HEAD
-}
-=======
-  tools {
-    maven 'Maven_3.6.3'
   }
 }
->>>>>>> 180620be333f048667c6de47616f79e8733f8caf
