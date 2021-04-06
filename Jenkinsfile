@@ -15,7 +15,8 @@ pipeline {
     stage('Test') {
       steps {
         withMaven() {
-          sh 'mvn test'
+          sh '''cd pwd()
+mvn test'''
         }
 
       }
