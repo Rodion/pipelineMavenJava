@@ -14,9 +14,9 @@ pipeline {
 
     stage('Test') {
       steps {
+        git 'https://github.com/Rodion/ComeAndEat.git'
         withMaven() {
-          sh '''cd pwd()
-mvn test'''
+          sh 'mvn test'
         }
 
       }
