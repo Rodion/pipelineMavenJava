@@ -26,6 +26,11 @@ pipeline {
 
       }
     }
+
+    stage('Copy Jar') {
+    }
+ 
+    /*
     stage('Docker') {
       agent {
           docker {
@@ -58,5 +63,6 @@ pipeline {
             sh "docker rmi $registry:$BUILD_NUMBER"
         }
     }
+    */
   }
 }
