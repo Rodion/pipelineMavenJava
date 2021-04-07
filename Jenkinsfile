@@ -26,6 +26,37 @@ pipeline {
 
       }
     }
-
+    stage('Docker') {
+      agent {
+          docker {
+              image 'docker'
+          }
+      }
+      steps {
+          sh 'docker --version'
+      }
+    }
+    stage('Building our image') {
+        steps{
+            script {
+                dockerImage = docker.build registry + ":$BUILD_NUMBER"
+            }
+              echo "Build number #${env.BUILD_NUMBER}"
+        }
+    }
+    stage('Deploy our image') {
+        steps{
+            script {
+                docker.withRegistry( '', registryCredential ) {
+                    dockerImage.push()
+                }
+            }
+        }
+    }
+    stage('Cleaning up') {
+        steps{
+            sh "docker rmi $registry:$BUILD_NUMBER"
+        }
+    }
   }
 }
