@@ -11,5 +11,16 @@ pipeline {
 
       }
     }
+
+    stage('Test') {
+      steps {
+        git 'https://github.com/Rodion/ComeAndEat.git'
+        withMaven() {
+          sh 'mvn test'
+        }
+
+      }
+    }
+
   }
 }
