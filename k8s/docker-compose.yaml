@@ -1,0 +1,28 @@
+# docker-compose.yml
+version: "3"
+services:
+  # Server
+  app:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    container_name: cameAndEat
+    ports:
+      - "8080:80"
+    env_file:
+      - ./env/cameAndEat.env
+    environment:
+      - APP_PORT
+      - APP_NAME
+    volumes:
+      - .:/home/app
+      - node_modules:/home/app/
+    expose:
+      - 80
+    networks:
+      - app-network
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+        max_attempts: 3

@@ -21,9 +21,9 @@ configMapGenerator:
 
 images:
   # The image as its defined in the Deployment file
-  - name: __image__
+  - name: cameAndEat
     # The new name to set
-    newName: my-registry/my-image
+    newName: my-registry/cameAndEat
     # optional: image tag
     newTag: v1
 
