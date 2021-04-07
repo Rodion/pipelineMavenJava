@@ -1,5 +1,10 @@
 pipeline {
   agent any
+  environment {
+        registry = 'mafiozi/jenkins-test'
+        registryCredential = 'dockerhub'
+        dockerImage = ''
+  }
   stages {
     stage('Build') {
       agent any

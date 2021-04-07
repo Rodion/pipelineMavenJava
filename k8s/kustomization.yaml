@@ -29,7 +29,7 @@ images:
 
 replicas:
   - name: deployment
-    count: 10
+    count: 1
 
 resources:
   - deployment.yaml
