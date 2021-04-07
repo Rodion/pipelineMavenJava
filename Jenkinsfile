@@ -23,11 +23,16 @@ pipeline {
         withMaven() {
           sh 'mvn test'
         }
-
       }
     }
 
     stage('Copy Jar') {
+      steps {
+        git 'https://github.com/Rodion/ComeAndEat.git'
+        withMaven() {
+          sh 'mvn test'
+        }
+      }
     }
  
     /*
