@@ -11,3 +11,10 @@ spec:
     containers:
       - name: container
         image: registry/conatiner:latest
+        env:
+          - name: APP_NAME
+            valueFrom:
+              configMapKeyRef:
+                name: app-config-map
+                key: APP_NAME
+
