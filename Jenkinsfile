@@ -9,7 +9,7 @@ pipeline {
           sh 'mvn clean install -DskipTests -Dmaven.test.skip=true'
         }
 
-        sh 'cp ./target/comeandeat-0.0.1-SNAPSHOT.jar /var/jenkins_home/comeandeat.jar'
+        sh 'cp ./target/comeandeat-0.0.1-SNAPSHOT.jar /data/comeandeat.jar'
       }
     }
 
