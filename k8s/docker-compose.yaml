@@ -2,27 +2,36 @@
 version: "3"
 services:
   # Server
-  app:
+  myapp:
     build:
       context: ./app
       dockerfile: Dockerfile
-    container_name: cameAndEat
+    container_name: comeandeat
     ports:
-      - "8080:80"
+      - "8080:8080"
     env_file:
-      - ./env/cameAndEat.env
+      - .env
     environment:
       - APP_PORT
       - APP_NAME
     volumes:
-      - .:/home/app
-      - node_modules:/home/app/
+      - datavol:/Users/radi/DEV/data
     expose:
-      - 80
-    networks:
-      - app-network
+      - 8080
     deploy:
       replicas: 1
       restart_policy:
         condition: on-failure
         max_attempts: 3
+volumes:
+  datavol: 
+    name: ${VOLUME_DATA}
+    external: true
+    
+    # name: jopa
+    #   hostPath:
+    #   # directory location on host
+    #   path: /Users/radi/Dev/data
+    #   # this field is optional
+    #   type: Directory                
+
