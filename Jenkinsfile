@@ -31,8 +31,6 @@ pipeline {
 
   }
   environment {
-    registry = 'mafiozi/jenkins-test'
-    registryCredential = 'dockerhub'
-    dockerImage = ''
+    test = 'test'
   }
 }
