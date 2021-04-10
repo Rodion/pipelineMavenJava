@@ -1,5 +1,7 @@
 # Dockerfile
 FROM adoptopenjdk/openjdk8:ubi
-RUN mkdir /opt/app
-COPY volume_data/comeandeat.jar /opt/app
-CMD ["java", "-jar", "/opt/app/comeandeat.jar"]
+# VOLUME ["/datavol"]
+ARG JAR_FILE=./app/comeandeat.jar
+RUN "pwd"
+COPY ${JAR_FILE} /comeandeat.jar
+CMD ["java", "-jar", "comeandeat.jar"]

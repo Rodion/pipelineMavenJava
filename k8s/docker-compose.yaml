@@ -3,19 +3,19 @@ version: "3"
 services:
   # Server
   myapp:
+    container_name: $CONTAINER_NAME
     build:
-      context: ./app
-      dockerfile: Dockerfile
-    container_name: comeandeat
+      context: $CUSTOM_IMAGE_FOLDER
+      dockerfile: ./app/Dockerfile    
     ports:
       - "8080:8080"
     env_file:
       - .env
-    environment:
-      - APP_PORT
-      - APP_NAME
-    volumes:
-      - datavol:/Users/radi/DEV/data
+    # environment:
+    #   - APP_PORT
+    #   - APP_NAME
+    # volumes:
+      # - datavol:.
     expose:
       - 8080
     deploy:
@@ -23,11 +23,15 @@ services:
       restart_policy:
         condition: on-failure
         max_attempts: 3
-volumes:
-  datavol: 
-    name: ${VOLUME_DATA}
-    external: true
-    
+# volumes:
+#   datavol: 
+#     driver: local
+#     driver_opts:
+#       o: bind
+#       type: none
+#       device: /Users/radi/Dev/data
+   
+
     # name: jopa
     #   hostPath:
     #   # directory location on host
