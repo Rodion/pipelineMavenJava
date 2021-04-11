@@ -1,8 +1,17 @@
-# kustomization.yaml for ConfigMap
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-namespace: kustomize-comeandeat
-# This will add annotation under every metadata entry
+# Set the default namespace for all the resources
+namespace: comeandeat_namespace
+
+# The files to be processed
+# Kustomization will re-order the kinds if required
+resources:
+  - ConfigMap.yaml
+  - Storage.yaml
+  - Service.yaml
+  - StatefulSet.yaml
+  - Images.yaml
+
 # ex: main metdata, spec.metadata etc
 configMapGenerator:
   # Generate config file from env file
@@ -12,25 +21,5 @@ configMapGenerator:
   # Generate config file from input file
   - name: configFromFile
     files:
-      - .env
-  # Generate configMap from direct input
-  - name: configFromLiterals
-    literals:
-      - Key1=value1
-      - Key2=value2
-images:
-  # The image as its defined in the Deployment file
-  - name: cameAndEat
-    # The new name to set
-    newName: my-registry/comeandeat
-    # optional: image tag
-  - volumes:
-    - name: jopa
-      hostPath:
-      # directory location on host
-      path: /Users/radi/Dev/data
-      # this field is optional
-      type: Directory                
+      - .env 
 
-resources:
-  - deployment.yaml
