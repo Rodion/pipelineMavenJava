@@ -2,19 +2,35 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: deployment
+  name: comeandeat
 spec:
-  replicas: 5
+  replicas: 1
   selector:
-    name: deployment
+     matchLabels:
+      app: comeandeat
   template:
-    containers:
-      - name: container
-        image: registry/conatiner:latest
-        env:
-          - name: APP_NAME
-            valueFrom:
-              configMapKeyRef:
-                name: app-config-map
-                key: APP_NAME
+    metadata:
+      labels:
+        app: comeandeat
+    spec:
+      containers:
+      - name: comeandeatcontainer
+        image: rodion31/comeandeat:latest
+        # livenessProbe:
+        #   exec:
+        #     command:
+        #     - cat
+        #     - /tmp/healthy
+        #   initialDelaySeconds: 5
+        #   periodSeconds: 5
+        ports:
+        - containerPort: 80
+        # env:
+        #   - name: APP_NAME
+        #     valueFrom:
+        #       configMapKeyRef:
+        #         name: app-config-map
+        #         key: APP_NAME
+    
+
 

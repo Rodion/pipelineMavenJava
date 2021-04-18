@@ -2,11 +2,11 @@
 version: "3"
 services:
   # Server
-  myapp:
+  comeandeat:
     container_name: $CONTAINER_NAME
     build:
       context: $CUSTOM_IMAGE_FOLDER
-      dockerfile: ./app/Dockerfile    
+      dockerfile: ./Dockerfile    
     ports:
       - "8080:8080"
     env_file:

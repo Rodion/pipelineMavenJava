@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: postgres
+  name: comeandeat
   labels:
-    app: postgres
+    app: comeandeat
 spec:
   selector:
-    app: postgres
+    app: comeandeat
   # Service of type nodeport
   type: NodePort
   # The deafult port for postgres

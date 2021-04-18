@@ -1,9 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: comeandeatconfigmap
-  labels:
-    app: comeandeat
+  name: comeandeat
 data:
 
   # The following names are the one defined in the official postgres docs
@@ -15,3 +13,18 @@ data:
   # The password for this demo
   POSTGRES_PASSWORD: admin123
 
+  CUSTOM_IMAGE_FOLDER: .
+  CONTAINER_NAME: comeandeat
+
+  # Listen on the desired ports
+  # - Port 8888   exposes the web interface 
+  HOST_PORT_WEB: "8888"
+
+  # - Port 50000  gives you access to a remote Java (JIRA) API.
+  HOST_PORT_API: "50000"
+
+  VOLUME_DATA: volume_data
+
+  # When the Docker platform is installed on a host, the Docker daemon
+  # listens on the `/var/run/docker.sock` Unix socket by default.
+  HOST_DOCKER: /var/run/docker.sock

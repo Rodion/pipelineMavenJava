@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: postgres
+  name: comeandeat
 spec:
   replicas: 1
   # StatefulSet must contain a serviceName
@@ -15,7 +15,7 @@ spec:
         app: postgres # has to match .spec.selector.matchLabels
     spec:
       containers:
-        - name: postgres
+        - name: comeandeatcontainer
           image: postgres:10.4
           imagePullPolicy: "IfNotPresent"
           # The default DB port
